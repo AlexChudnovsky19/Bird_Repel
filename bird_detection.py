@@ -2,7 +2,7 @@ import os
 import cv2
 from ultralytics import YOLO  
 
-model = YOLO('best (6).pt')  # Loads your trained YOLO model
+model = YOLO('model.pt')  # Loads your trained YOLO model
 
 video_folder = './Test_Videos'
 
@@ -45,4 +45,7 @@ def process_all_videos(video_folder):
             print(f"Processing video: {video_path}")
             process_video(video_path)
 
-process_all_videos(video_folder)
+#process_all_videos(video_folder)
+
+video_path = os.path.join(video_folder, 'testvideo11.mp4')
+process_video(video_path)
