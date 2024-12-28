@@ -1,11 +1,19 @@
 # BirdRepel: Automated Bird Deterrent System 🐦🚫
 
+![License](https://img.shields.io/github/license/yourusername/BirdRepel)
+![Stars](https://img.shields.io/github/stars/yourusername/BirdRepel)
+![Forks](https://img.shields.io/github/forks/yourusername/BirdRepel)
+![Issues](https://img.shields.io/github/issues/yourusername/BirdRepel)
+
 ## Table of Contents 📚
 
 - [📖 About](#-about)
 - [🚀 Features](#-features)
 - [🧠 Training Process](#-training-process)
 - [🛠️ Installation](#️-installation)
+  - [Prerequisites](#prerequisites)
+  - [Hardware Setup 🔧](#hardware-setup-🔧)
+  - [Software Setup 🖥️](#software-setup-🖥️)
 - [⚙️ Usage](#️-usage)
 - [📷 Demo](#-demo)
 - [🧰 Technologies](#-technologies)
@@ -15,7 +23,7 @@
 
 ## 📖 About
 
-**BirdRepel** is an automated bird deterrent system designed to protect balcony plants from birds that damage them. Leveraging advanced computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, effectively discouraging birds from approaching and harming your balcony.
+**BirdRepel** is an automated bird deterrent system designed to protect balcony plants from birds that steal and damage them. Leveraging advanced computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, effectively discouraging birds from approaching and harming your plants.
 
 ## 🚀 Features
 
@@ -24,17 +32,19 @@
 - **Edge Computing 🖥️:** Runs entirely on a Raspberry Pi, ensuring low latency and independence from external servers.
 - **Customizable Detection Parameters 🎛️:** Adjust sensitivity and detection thresholds to suit specific environments.
 - **Energy Efficient 🔋:** Optimized for low power consumption, making it ideal for continuous outdoor use.
+- **Hardware Integration 🔌:** Seamlessly integrates Raspberry Pi with relay modules and external devices like water guns.
+- **Voltage Management ⚡:** Ensures safe and effective voltage regulation for connected peripherals.
 
 ## 🧠 Training Process
 
 Training the YOLOv11 model involved several key steps to ensure high accuracy in bird detection:
 
 1. **Dataset Collection 📸:**
-   - Created a comprehensive bird datasets of the birds that harm the balcony.
+   - Created a comprehensive bird dataset by capturing thousands of images from various angles and lighting conditions using a Raspberry Pi camera.
    - Ensured diversity by including different bird species and backgrounds to enhance model robustness.
 
 2. **Data Annotation 📝:**
-   - Used annotation tool to mark bounding boxes around birds.
+   - Manually annotated images using [LabelImg](https://github.com/tzutalin/labelImg) to mark bounding boxes around birds.
    - Organized data into training and validation sets to monitor performance.
 
 3. **Model Training 🏋️‍♂️:**
@@ -52,3 +62,218 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 
    # Start training
    python train.py --data data/bird_dataset.yaml --cfg cfg/yolov11.cfg --weights yolov5s.pt --epochs 100
+Model Evaluation 📊:
+
+Assessed model performance using metrics like Precision, Recall, and mAP (mean Average Precision).
+Fine-tuned the model based on evaluation results to achieve optimal detection accuracy.
+Deployment 🚀:
+
+Converted the trained model to a format compatible with Raspberry Pi.
+Optimized the model for real-time inference on edge devices.
+🛠️ Installation
+Prerequisites
+Hardware 🖥️:
+
+Raspberry Pi 4 (4GB RAM recommended) 🪨
+Raspberry Pi Camera Module 📷
+Relay Module 🔌
+Water Gun 💦 (operating at appropriate voltage)
+Power Supply for Raspberry Pi and peripherals 🔋
+Jumper Wires 🪛
+Breadboard (optional for prototyping) 🧱
+Software 💻:
+
+Raspberry Pi OS 🐧
+Python 3.8+ 🐍
+OpenCV 📚
+PyTorch 🧠
+YOLOv11 🔍
+Hardware Setup 🔧
+Connect the Raspberry Pi Camera Module 📷:
+
+Attach the Camera Module to the Raspberry Pi's CSI port.
+Ensure the connection is secure and the ribbon cable is properly seated.
+Set Up the Relay Module 🔌:
+
+Wiring Diagram 🛠️:
+
+VCC (Relay) → 5V (Raspberry Pi)
+GND (Relay) → GND (Raspberry Pi)
+IN (Relay) → GPIO17 (Pin 11)
+NO (Normally Open) → Water Gun Positive Terminal (+)
+COM (Common) → Power Supply Positive (+)
+Water Gun Negative Terminal (−) → Power Supply Negative (−)
+Voltage Integration ⚡:
+
+Important: Ensure that the voltage requirements of the water gun match the relay's specifications.
+Use a separate power supply for the water gun if necessary to prevent overloading the Raspberry Pi.
+Consider using a voltage regulator or a power management module to maintain stable voltage levels.
+Safety Precautions 🛡️:
+
+Double-check all connections before powering up.
+Use appropriate resistors or protective components to prevent short circuits.
+If unsure, consult an electronics professional to verify the setup.
+Power Supply 🔋:
+
+Provide a reliable power source to the Raspberry Pi and peripherals.
+Use high-quality power adapters to ensure consistent voltage and current.
+Software Setup 🖥️
+Clone the Repository 📥:
+
+bash
+Copy code
+git clone https://github.com/yourusername/BirdRepel.git
+cd BirdRepel
+Set Up the Environment 🛠️:
+
+bash
+Copy code
+sudo apt-get update
+sudo apt-get install python3-pip
+pip3 install -r requirements.txt
+Configure the YOLOv11 Model 🧩:
+
+Place the trained YOLOv11 weights in the models/ directory.
+Update the configuration file config.yaml with the correct paths and parameters.
+Set Up Environment Variables ⚙️:
+
+Create a .env file in the root directory and add necessary configurations:
+
+env
+Copy code
+MODEL_PATH=models/yolov11.pth
+CAMERA_INDEX=0
+RELAY_PIN=17
+DETECTION_THRESHOLD=0.5
+WATER_GUN_VOLTAGE=12V
+Note: Replace WATER_GUN_VOLTAGE with the actual voltage requirement of your water gun.
+
+Enable GPIO Access 🔓:
+
+Ensure that the Raspberry Pi has access to GPIO pins.
+
+bash
+Copy code
+sudo raspi-config
+Navigate to Interfacing Options and enable Camera and GPIO.
+
+Run the Application 🏃‍♂️:
+
+bash
+Copy code
+python3 main.py
+Deploy on Startup (Optional) 🔄:
+
+To ensure BirdRepel runs automatically on boot:
+
+bash
+Copy code
+sudo crontab -e
+Add the following line:
+
+bash
+Copy code
+@reboot /usr/bin/python3 /home/pi/BirdRepel/main.py &
+Troubleshooting 🛠️
+Camera Not Detected 📷:
+
+Verify the camera connection.
+
+Ensure the camera is enabled in raspi-config.
+
+Test the camera using raspistill:
+
+bash
+Copy code
+raspistill -o test.jpg
+Relay Not Activating 🔌:
+
+Check GPIO pin configuration.
+Ensure the relay module is properly connected.
+Test the relay with a simple Python script to toggle the GPIO pin.
+Water Gun Not Firing 💦:
+
+Verify voltage requirements.
+Check all connections for continuity.
+Ensure the water gun is operational.
+⚙️ Usage
+Once installed and running, BirdRepel operates seamlessly to protect your balcony plants. Here's how to use and customize the system:
+
+Start the System 🚀:
+
+Ensure all hardware connections are secure and run the application:
+
+bash
+Copy code
+python3 main.py
+Monitoring 👀:
+
+The system will display a live feed from the camera.
+Detected birds will be highlighted with bounding boxes.
+The console will log detection events and relay activations.
+Customization 🎛️:
+
+Detection Sensitivity:
+
+Adjust the DETECTION_THRESHOLD in the .env file to make the system more or less sensitive to bird movements.
+Relay Configuration:
+
+Modify the RELAY_PIN if you're using a different GPIO pin for the relay module.
+Water Gun Voltage:
+
+Set the WATER_GUN_VOLTAGE in the .env file to match your water gun's specifications.
+Logging 📄:
+
+Logs are saved in the logs/ directory for monitoring detections and system performance.
+Review logs to analyze detection accuracy and system responsiveness.
+Maintenance 🧹:
+
+Camera Lens:
+
+Regularly clean the camera lens to ensure clear image capture.
+Water Gun Mechanism:
+
+Check the water gun for blockages or wear.
+Refill water as needed to maintain deterrent effectiveness.
+Hardware Inspection:
+
+Periodically inspect all connections and components for signs of damage or wear.
+📷 Demo
+
+Watch BirdRepel detect and deter birds in real-time.
+
+Live Demo Video
+
+🧰 Technologies
+Programming Languages: Python, C++ 🐍💻
+Machine Learning: YOLOv11, PyTorch 🧠
+Hardware:
+Raspberry Pi 4 🪨
+Raspberry Pi Camera Module 📷
+Relay Module 🔌
+Water Gun 💦
+Libraries & Frameworks: OpenCV, GPIO Zero 📚🔧
+Others: Docker (optional for containerization) 🐳
+🤝 Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+Steps to Contribute
+Fork the Project 🍴
+
+Create your Feature Branch 🌿
+
+bash
+Copy code
+git checkout -b feature/YourFeature
+Commit your Changes ✍️
+
+bash
+Copy code
+git commit -m 'Add some YourFeature'
+Push to the Branch 🚀
+
+bash
+Copy code
+git push origin feature/YourFeature
+Open a Pull Request 🔀
+
