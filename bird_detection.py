@@ -2,7 +2,7 @@ import os
 import cv2
 from ultralytics import YOLO  
 
-model = YOLO('model.pt')  # Loads your trained YOLO model
+model = YOLO('best (7).pt')  
 
 video_folder = './Test_Videos'
 
@@ -20,17 +20,14 @@ def process_video(video_path):
             print(f"End of video or can't fetch the frame for {video_path}.")
             break
 
-        # Run the YOLO model on the current frame
         results = model(frame)
 
-        # Render detections and update the frame
         for result in results:
-            # Modify the frame with the detections (bounding boxes and labels)
-            frame = result.plot()  # Assign the frame with rendered detections back to `frame`
+
+            frame = result.plot() 
 
         cv2.imshow(f'Bird Detection - {video_path}', frame)
 
-        # Press 'q' to stop the video early and move to the next video
         if cv2.waitKey(25) & 0xFF == ord('q'):
             print(f"Quitting video: {video_path}")
             break
