@@ -131,17 +131,19 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 
 #### **Clone the Repository 📥**
 
-bash
+```bash
 git clone https://github.com/yourusername/BirdRepel.git
 cd BirdRepel
+```
 
-####  **Set Up the Environment 🛠️ ** 
+#### **Set Up the Environment 🛠️ ** 
 
-bash
+```bash
 Copy code
 sudo apt-get update
 sudo apt-get install python3-pip
 pip3 install -r requirements.txt
+```
 
 #### **Configure the YOLOv11 Model 🧩**
 Place the trained YOLOv11 weights in the models/ directory.
@@ -150,7 +152,7 @@ Update the configuration file config.yaml with the correct paths and parameters.
 #### **Set Up Environment Variables ⚙️**
 Create a .env file in the root directory and add the necessary configurations:
 
-env
+```env
 Copy code
 MODEL_PATH=models/yolov11.pth
 CAMERA_INDEX=0
@@ -158,20 +160,23 @@ RELAY_PIN=17
 DETECTION_THRESHOLD=0.5
 WATER_GUN_VOLTAGE=12V
 Note: Replace WATER_GUN_VOLTAGE with the actual voltage requirement of your water gun.
+```
 
 #### **Enable GPIO Access 🔓**
 Ensure that the Raspberry Pi has access to GPIO pins.
 
-bash
+```bash
 Copy code
 sudo raspi-config
 Navigate to Interfacing Options and enable Camera and GPIO.
+```
 
 #### **Run the Application 🏃‍♂️**
 
-bash
+```bash
 Copy code
 python3 main.py
+```
 
 #### **Deploy on Startup (Optional) 🔄**
 
@@ -179,16 +184,18 @@ To ensure BirdRepel runs automatically on boot:
 
 Open the crontab editor:
 
-bash
+```bash
 Copy code
 sudo crontab -e
+```
 Add the following line:
 
-bash
+```bash
 Copy code
 @reboot /usr/bin/python3 /home/pi/BirdRepel/main.py &
+```
 
-##⚙️ Usage
+## ⚙️ Usage
 
 Once installed and running, BirdRepel operates seamlessly to protect your balcony plants. Here's how to use and customize the system:
 
@@ -197,9 +204,10 @@ Ensure all hardware connections are secure.
 
 Run the application:
 
-bash
+```bash
 Copy code
 python3 main.py
+```
 
 #### **Monitoring 👀**
 
