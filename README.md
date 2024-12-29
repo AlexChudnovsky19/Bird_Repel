@@ -65,6 +65,8 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 - Assessed model performance using metrics like Precision, Recall, and mAP (mean Average Precision).
 - Fine-tuned the model based on evaluation results to achieve optimal detection accuracy.
 
+![Model_Training_Track](https://github.com/user-attachments/assets/3d0c44b3-c863-48c2-bd33-4808de3f3c9f)
+
 ### 5. **Deployment 🚀**
 
 - Converted the trained model to a format compatible with Raspberry Pi.
