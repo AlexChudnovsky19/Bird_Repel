@@ -139,7 +139,6 @@ cd BirdRepel
 #### **Set Up the Environment 🛠️ ** 
 
 ```bash
-Copy code
 sudo apt-get update
 sudo apt-get install python3-pip
 pip3 install -r requirements.txt
@@ -153,7 +152,6 @@ Update the configuration file config.yaml with the correct paths and parameters.
 Create a .env file in the root directory and add the necessary configurations:
 
 ```env
-Copy code
 MODEL_PATH=models/yolov11.pth
 CAMERA_INDEX=0
 RELAY_PIN=17
@@ -166,7 +164,6 @@ Note: Replace WATER_GUN_VOLTAGE with the actual voltage requirement of your wate
 Ensure that the Raspberry Pi has access to GPIO pins.
 
 ```bash
-Copy code
 sudo raspi-config
 Navigate to Interfacing Options and enable Camera and GPIO.
 ```
@@ -174,7 +171,6 @@ Navigate to Interfacing Options and enable Camera and GPIO.
 #### **Run the Application 🏃‍♂️**
 
 ```bash
-Copy code
 python3 main.py
 ```
 
@@ -185,13 +181,11 @@ To ensure BirdRepel runs automatically on boot:
 Open the crontab editor:
 
 ```bash
-Copy code
 sudo crontab -e
 ```
 Add the following line:
 
 ```bash
-Copy code
 @reboot /usr/bin/python3 /home/pi/BirdRepel/main.py &
 ```
 
@@ -205,7 +199,6 @@ Ensure all hardware connections are secure.
 Run the application:
 
 ```bash
-Copy code
 python3 main.py
 ```
 
@@ -239,14 +232,14 @@ Refill water as needed to maintain deterrent effectiveness.
 Hardware Inspection
 Periodically inspect all connections and components for signs of damage or wear.
 
-##📷 Demo
+## 📷 Demo
 Watch BirdRepel detect and deter birds in real-time.
 
 Live Demo Video
 
 (Replace the link with your actual demo video URL)
 
-##🧰 Technologies
+## 🧰 Technologies
 Programming Languages: Python, C++ 🐍💻
 Machine Learning: YOLOv11, PyTorch 🧠
 Hardware:
