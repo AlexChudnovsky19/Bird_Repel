@@ -16,7 +16,7 @@
 
 ## 📖 About
 
-**BirdRepel** is an automated bird deterrent system designed to protect balcony plants from birds that steal and damage them. Leveraging advanced computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, effectively discouraging birds from approaching and harming your plants.
+**BirdRepel** is an automated bird repel system designed to protect balcony plants and keep it clean from bird poo. Using computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, effectively discouraging birds from approaching and harming your plants and the balcony.
 
 ## 🚀 Features
 
@@ -34,12 +34,12 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 
 ### 1. **Dataset Collection 📸**
 
-- Created a comprehensive bird dataset by capturing thousands of images from various angles and lighting conditions using a Raspberry Pi camera.
+- Created a comprehensive bird dataset by capturing and finding online images from various angles and lighting conditions of the birds that damage the balcony plants and cleanliness.
 - Ensured diversity by including different bird species and backgrounds to enhance model robustness.
 
 ### 2. **Data Annotation 📝**
 
-- Manually annotated images using [LabelImg](https://github.com/tzutalin/labelImg) to mark bounding boxes around birds.
+- annotated images using roboflow to mark bounding boxes around birds.
 - Organized data into training and validation sets to monitor performance.
 
 ### 3. **Model Training 🏋️‍♂️**
@@ -224,16 +224,6 @@ Set the WATER_GUN_VOLTAGE in the .env file to match your water gun's specificati
 Logs are saved in the logs/ directory for monitoring detections and system performance.
 Review logs to analyze detection accuracy and system responsiveness.
 
-#### **Maintenance 🧹**
-
-Camera Lens
-Regularly clean the camera lens to ensure clear image capture.
-Water Gun Mechanism
-Check the water gun for blockages or wear.
-Refill water as needed to maintain deterrent effectiveness.
-Hardware Inspection
-Periodically inspect all connections and components for signs of damage or wear.
-
 ## 📷 Demo
 Watch BirdRepel detect and deter birds in real-time.
 
@@ -242,13 +232,20 @@ Live Demo Video
 (Replace the link with your actual demo video URL)
 
 ## 🧰 Technologies
-Programming Languages: Python, C++ 🐍💻
-Machine Learning: YOLOv11, PyTorch 🧠
+
+Programming Languages: Python
+
+Machine Learning: YOLOv11, PyTorch 
+
 Hardware:
-Raspberry Pi 4 🪨
-Raspberry Pi Camera Module 📷
-Relay Module 🔌
-Water Gun 💦
-Libraries & Frameworks: OpenCV, GPIO Zero 📚🔧
-Others: Docker (optional for containerization) 🐳
+
+Raspberry Pi 4 
+Raspberry Pi Camera Module 
+Relay Module 
+4 Volt Water Gun 
+
+Libraries & Frameworks:
+
+OpenCV, GPIO Zero 
+
 
