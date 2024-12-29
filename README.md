@@ -1,10 +1,5 @@
 # BirdRepel: Automated Bird Deterrent System 🐦🚫
 
-![License](https://img.shields.io/github/license/yourusername/BirdRepel)
-![Stars](https://img.shields.io/github/stars/yourusername/BirdRepel)
-![Forks](https://img.shields.io/github/forks/yourusername/BirdRepel)
-![Issues](https://img.shields.io/github/issues/yourusername/BirdRepel)
-
 ## Table of Contents 📚
 
 - [📖 About](#-about)
@@ -14,12 +9,10 @@
   - [Prerequisites](#prerequisites)
   - [Hardware Setup 🔧](#hardware-setup-🔧)
   - [Software Setup 🖥️](#software-setup-🖥️)
-- [⚙️ Usage](#️-usage)
+- [⚙️ Usage](#-usage)
 - [📷 Demo](#-demo)
 - [🧰 Technologies](#-technologies)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [📫 Contact](#-contact)
+
 
 ## 📖 About
 
@@ -39,105 +32,123 @@
 
 Training the YOLOv11 model involved several key steps to ensure high accuracy in bird detection:
 
-1. **Dataset Collection 📸:**
-   - Created a comprehensive bird dataset by capturing thousands of images from various angles and lighting conditions using a Raspberry Pi camera.
-   - Ensured diversity by including different bird species and backgrounds to enhance model robustness.
+### 1. **Dataset Collection 📸**
 
-2. **Data Annotation 📝:**
-   - Manually annotated images using [LabelImg](https://github.com/tzutalin/labelImg) to mark bounding boxes around birds.
-   - Organized data into training and validation sets to monitor performance.
+- Created a comprehensive bird dataset by capturing thousands of images from various angles and lighting conditions using a Raspberry Pi camera.
+- Ensured diversity by including different bird species and backgrounds to enhance model robustness.
 
-3. **Model Training 🏋️‍♂️:**
-   - Utilized the YOLOv11 architecture for its balance between speed and accuracy.
-   - Configured hyperparameters such as learning rate, batch size, and epochs to optimize training.
-   - Employed transfer learning by initializing with pre-trained weights to accelerate convergence.
+### 2. **Data Annotation 📝**
 
-   ```bash
-   # Clone YOLOv11 repository
-   git clone https://github.com/yourusername/yolov11.git
-   cd yolov11
+- Manually annotated images using [LabelImg](https://github.com/tzutalin/labelImg) to mark bounding boxes around birds.
+- Organized data into training and validation sets to monitor performance.
 
-   # Install dependencies
-   pip install -r requirements.txt
+### 3. **Model Training 🏋️‍♂️**
 
-   # Start training
-   python train.py --data data/bird_dataset.yaml --cfg cfg/yolov11.cfg --weights yolov5s.pt --epochs 100
-Model Evaluation 📊:
+- Utilized the YOLOv11 architecture for its balance between speed and accuracy.
+- Configured hyperparameters such as learning rate, batch size, and epochs to optimize training.
+- Employed transfer learning by initializing with pre-trained weights to accelerate convergence.
 
-Assessed model performance using metrics like Precision, Recall, and mAP (mean Average Precision).
-Fine-tuned the model based on evaluation results to achieve optimal detection accuracy.
-Deployment 🚀:
+    ```bash
+    # Clone YOLOv11 repository
+    git clone https://github.com/yourusername/yolov11.git
+    cd yolov11
 
-Converted the trained model to a format compatible with Raspberry Pi.
-Optimized the model for real-time inference on edge devices.
-🛠️ Installation
-Prerequisites
-Hardware 🖥️:
+    # Install dependencies
+    pip install -r requirements.txt
 
-Raspberry Pi 4 (4GB RAM recommended) 🪨
-Raspberry Pi Camera Module 📷
-Relay Module 🔌
-Water Gun 💦 (operating at appropriate voltage)
-Power Supply for Raspberry Pi and peripherals 🔋
-Jumper Wires 🪛
-Breadboard (optional for prototyping) 🧱
-Software 💻:
+    # Start training
+    python train.py --data data/bird_dataset.yaml --cfg cfg/yolov11.cfg --weights yolov5s.pt --epochs 100
+    ```
 
-Raspberry Pi OS 🐧
-Python 3.8+ 🐍
-OpenCV 📚
-PyTorch 🧠
-YOLOv11 🔍
-Hardware Setup 🔧
-Connect the Raspberry Pi Camera Module 📷:
+### 4. **Model Evaluation 📊**
 
-Attach the Camera Module to the Raspberry Pi's CSI port.
-Ensure the connection is secure and the ribbon cable is properly seated.
-Set Up the Relay Module 🔌:
+- Assessed model performance using metrics like Precision, Recall, and mAP (mean Average Precision).
+- Fine-tuned the model based on evaluation results to achieve optimal detection accuracy.
 
-Wiring Diagram 🛠️:
+### 5. **Deployment 🚀**
 
-VCC (Relay) → 5V (Raspberry Pi)
-GND (Relay) → GND (Raspberry Pi)
-IN (Relay) → GPIO17 (Pin 11)
-NO (Normally Open) → Water Gun Positive Terminal (+)
-COM (Common) → Power Supply Positive (+)
-Water Gun Negative Terminal (−) → Power Supply Negative (−)
-Voltage Integration ⚡:
+- Converted the trained model to a format compatible with Raspberry Pi.
+- Optimized the model for real-time inference on edge devices.
 
-Important: Ensure that the voltage requirements of the water gun match the relay's specifications.
-Use a separate power supply for the water gun if necessary to prevent overloading the Raspberry Pi.
-Consider using a voltage regulator or a power management module to maintain stable voltage levels.
-Safety Precautions 🛡️:
+## 🛠️ Installation
 
-Double-check all connections before powering up.
-Use appropriate resistors or protective components to prevent short circuits.
-If unsure, consult an electronics professional to verify the setup.
-Power Supply 🔋:
+### Prerequisites
 
-Provide a reliable power source to the Raspberry Pi and peripherals.
-Use high-quality power adapters to ensure consistent voltage and current.
-Software Setup 🖥️
-Clone the Repository 📥:
+#### **Hardware 🖥️**
+
+- **Raspberry Pi 4** (4GB RAM recommended) 🪨
+- **Raspberry Pi Camera Module** 📷
+- **Relay Module** 🔌
+- **Water Gun** 💦 (operating at appropriate voltage)
+- **Power Supply** for Raspberry Pi and peripherals 🔋
+- **Jumper Wires** 🪛
+- **Breadboard** (optional for prototyping) 🧱
+
+#### **Software 💻**
+
+- **Raspberry Pi OS** 🐧
+- **Python 3.8+** 🐍
+- **OpenCV** 📚
+- **PyTorch** 🧠
+- **YOLOv11** 🔍
+
+### Hardware Setup 🔧
+
+#### **Connect the Raspberry Pi Camera Module 📷**
+
+1. Attach the Camera Module to the Raspberry Pi's CSI port.
+2. Ensure the connection is secure and the ribbon cable is properly seated.
+
+#### **Set Up the Relay Module 🔌**
+
+##### **Wiring Diagram 🛠️**
+
+- **VCC (Relay)** → **5V** (Raspberry Pi)
+- **GND (Relay)** → **GND** (Raspberry Pi)
+- **IN (Relay)** → **GPIO17** (Pin 11)
+- **NO (Normally Open)** → **Water Gun Positive Terminal (+)**
+- **COM (Common)** → **Power Supply Positive (+)**
+- **Water Gun Negative Terminal (−)** → **Power Supply Negative (−)**
+
+##### **Voltage Integration ⚡**
+
+- **Important:** Ensure that the voltage requirements of the water gun match the relay's specifications.
+- Use a separate power supply for the water gun if necessary to prevent overloading the Raspberry Pi.
+- Consider using a voltage regulator or a power management module to maintain stable voltage levels.
+
+##### **Safety Precautions 🛡️**
+
+- Double-check all connections before powering up.
+- Use appropriate resistors or protective components to prevent short circuits.
+- If unsure, consult an electronics professional to verify the setup.
+
+#### **Power Supply 🔋**
+
+- Provide a reliable power source to the Raspberry Pi and peripherals.
+- Use high-quality power adapters to ensure consistent voltage and current.
+
+### Software Setup 🖥️
+
+#### **Clone the Repository 📥**
 
 bash
-Copy code
 git clone https://github.com/yourusername/BirdRepel.git
 cd BirdRepel
-Set Up the Environment 🛠️:
+
+####  **Set Up the Environment 🛠️ ** 
 
 bash
 Copy code
 sudo apt-get update
 sudo apt-get install python3-pip
 pip3 install -r requirements.txt
-Configure the YOLOv11 Model 🧩:
 
+#### **Configure the YOLOv11 Model 🧩**
 Place the trained YOLOv11 weights in the models/ directory.
 Update the configuration file config.yaml with the correct paths and parameters.
-Set Up Environment Variables ⚙️:
 
-Create a .env file in the root directory and add necessary configurations:
+#### **Set Up Environment Variables ⚙️**
+Create a .env file in the root directory and add the necessary configurations:
 
 env
 Copy code
@@ -148,8 +159,7 @@ DETECTION_THRESHOLD=0.5
 WATER_GUN_VOLTAGE=12V
 Note: Replace WATER_GUN_VOLTAGE with the actual voltage requirement of your water gun.
 
-Enable GPIO Access 🔓:
-
+#### **Enable GPIO Access 🔓**
 Ensure that the Raspberry Pi has access to GPIO pins.
 
 bash
@@ -157,14 +167,17 @@ Copy code
 sudo raspi-config
 Navigate to Interfacing Options and enable Camera and GPIO.
 
-Run the Application 🏃‍♂️:
+#### **Run the Application 🏃‍♂️**
 
 bash
 Copy code
 python3 main.py
-Deploy on Startup (Optional) 🔄:
+
+#### **Deploy on Startup (Optional) 🔄**
 
 To ensure BirdRepel runs automatically on boot:
+
+Open the crontab editor:
 
 bash
 Copy code
@@ -174,77 +187,58 @@ Add the following line:
 bash
 Copy code
 @reboot /usr/bin/python3 /home/pi/BirdRepel/main.py &
-Troubleshooting 🛠️
-Camera Not Detected 📷:
 
-Verify the camera connection.
+##⚙️ Usage
 
-Ensure the camera is enabled in raspi-config.
-
-Test the camera using raspistill:
-
-bash
-Copy code
-raspistill -o test.jpg
-Relay Not Activating 🔌:
-
-Check GPIO pin configuration.
-Ensure the relay module is properly connected.
-Test the relay with a simple Python script to toggle the GPIO pin.
-Water Gun Not Firing 💦:
-
-Verify voltage requirements.
-Check all connections for continuity.
-Ensure the water gun is operational.
-⚙️ Usage
 Once installed and running, BirdRepel operates seamlessly to protect your balcony plants. Here's how to use and customize the system:
 
-Start the System 🚀:
+#### **Start the System 🚀**
+Ensure all hardware connections are secure.
 
-Ensure all hardware connections are secure and run the application:
+Run the application:
 
 bash
 Copy code
 python3 main.py
-Monitoring 👀:
+
+#### **Monitoring 👀**
 
 The system will display a live feed from the camera.
 Detected birds will be highlighted with bounding boxes.
 The console will log detection events and relay activations.
-Customization 🎛️:
 
-Detection Sensitivity:
+#### **Customization 🎛️**
 
+Detection Sensitivity
 Adjust the DETECTION_THRESHOLD in the .env file to make the system more or less sensitive to bird movements.
-Relay Configuration:
-
+Relay Configuration
 Modify the RELAY_PIN if you're using a different GPIO pin for the relay module.
-Water Gun Voltage:
-
+Water Gun Voltage
 Set the WATER_GUN_VOLTAGE in the .env file to match your water gun's specifications.
-Logging 📄:
+
+#### **Logging 📄**
 
 Logs are saved in the logs/ directory for monitoring detections and system performance.
 Review logs to analyze detection accuracy and system responsiveness.
-Maintenance 🧹:
 
-Camera Lens:
+#### **Maintenance 🧹**
 
+Camera Lens
 Regularly clean the camera lens to ensure clear image capture.
-Water Gun Mechanism:
-
+Water Gun Mechanism
 Check the water gun for blockages or wear.
 Refill water as needed to maintain deterrent effectiveness.
-Hardware Inspection:
-
+Hardware Inspection
 Periodically inspect all connections and components for signs of damage or wear.
-📷 Demo
 
+##📷 Demo
 Watch BirdRepel detect and deter birds in real-time.
 
 Live Demo Video
 
-🧰 Technologies
+(Replace the link with your actual demo video URL)
+
+##🧰 Technologies
 Programming Languages: Python, C++ 🐍💻
 Machine Learning: YOLOv11, PyTorch 🧠
 Hardware:
@@ -254,26 +248,4 @@ Relay Module 🔌
 Water Gun 💦
 Libraries & Frameworks: OpenCV, GPIO Zero 📚🔧
 Others: Docker (optional for containerization) 🐳
-🤝 Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
-Steps to Contribute
-Fork the Project 🍴
-
-Create your Feature Branch 🌿
-
-bash
-Copy code
-git checkout -b feature/YourFeature
-Commit your Changes ✍️
-
-bash
-Copy code
-git commit -m 'Add some YourFeature'
-Push to the Branch 🚀
-
-bash
-Copy code
-git push origin feature/YourFeature
-Open a Pull Request 🔀
 
