@@ -16,7 +16,7 @@
 
 ## 📖 About
 
-**BirdRepel** is an automated bird repel system designed to protect balcony plants and keep it clean from bird poo. Using computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, effectively discouraging birds from approaching and harming your plants and the balcony.
+**BirdRepel** is an automated bird repellent system designed to protect balcony plants and maintain cleanliness by preventing birds from leaving droppings. Using computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, effectively discouraging birds from approaching and harming your plants and the balcony.
 
 ## 🚀 Features
 
@@ -48,18 +48,6 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 - Configured hyperparameters such as learning rate, batch size, and epochs to optimize training.
 - Employed transfer learning by initializing with pre-trained weights to accelerate convergence.
 
-    ```bash
-    # Clone YOLOv11 repository
-    git clone https://github.com/yourusername/yolov11.git
-    cd yolov11
-
-    # Install dependencies
-    pip install -r requirements.txt
-
-    # Start training
-    python train.py --data data/bird_dataset.yaml --cfg cfg/yolov11.cfg --weights yolov5s.pt --epochs 100
-    ```
-
 ### 4. **Model Evaluation 📊**
 
 - Assessed model performance using metrics like Precision, Recall, and mAP (mean Average Precision).
@@ -84,7 +72,6 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 - **Water Gun** 💦 (operating at appropriate voltage)
 - **Power Supply** for Raspberry Pi and peripherals 🔋
 - **Jumper Wires** 🪛
-- **Breadboard** (optional for prototyping) 🧱
 
 #### **Software 💻**
 
@@ -95,11 +82,6 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 - **YOLOv11** 🔍
 
 ### Hardware Setup 🔧
-
-#### **Connect the Raspberry Pi Camera Module 📷**
-
-1. Attach the Camera Module to the Raspberry Pi's CSI port.
-2. Ensure the connection is secure and the ribbon cable is properly seated.
 
 #### **Set Up the Relay Module 🔌**
 
@@ -173,10 +155,10 @@ Navigate to Interfacing Options and enable Camera and GPIO.
 #### **Run the Application 🏃‍♂️**
 
 ```bash
-python3 main.py
+python3 bird_tracker.py
 ```
 
-#### **Deploy on Startup (Optional) 🔄**
+#### **Deploy on Startup 🔄**
 
 To ensure BirdRepel runs automatically on boot:
 
