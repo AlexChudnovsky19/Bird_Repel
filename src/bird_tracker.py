@@ -106,7 +106,7 @@ try:
                     (x1, y1 - 10),
                     cv2.FONT_HERSHEY_SIMPLEX, 
                     0.5,
-                    (0, 255, 0), 
+                    (0, 0, 255), 
                     2
                 )
 
@@ -127,7 +127,7 @@ try:
                     #       If error_x is positive, that means the bird is to the right, 
                     #       so we need to increase pan_angle to move servo right (depending on your servo orientation).
                     pan_angle -= error_x * KP_PAN
-                    tilt_angle -= error_y * KP_TILT  # or += depending on servo orientation
+                    tilt_angle += error_y * KP_TILT  
 
                     # Clamp angles to [MIN_ANGLE, MAX_ANGLE]
                     pan_angle = max(MIN_ANGLE, min(MAX_ANGLE, pan_angle))
