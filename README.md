@@ -3,6 +3,7 @@
 ## Table of Contents 📚
 
 - [📖 About](#-about)
+- [📷 Demo](#-demo)
 - [🚀 Features](#-features)
 - [🧠 Training Process](#-training-process)
 - [🛠️ Installation](#️-installation)
@@ -10,13 +11,18 @@
   - [Hardware Setup 🔧](#hardware-setup-🔧)
   - [Software Setup 🖥️](#software-setup-🖥️)
 - [⚙️ Usage](#-usage)
-- [📷 Demo](#-demo)
 - [🧰 Technologies](#-technologies)
 
 
 ## 📖 About
 
 **BirdRepel** is an automated bird repellent system designed to protect balcony plants and maintain cleanliness by preventing birds from leaving droppings. Using computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, effectively discouraging birds from approaching and harming your plants and the balcony.
+
+## 📷 Demo
+
+Live Demo Video, Turn on the sound to hear the activation of the water gun when the bird detected.
+
+https://github.com/user-attachments/assets/09067a2b-6405-4b89-9aff-c5620eb1b70c
 
 ## 🚀 Features
 
@@ -60,8 +66,12 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 - Converted the trained model to a format compatible with Raspberry Pi.
 - Optimized the model for real-time inference on edge devices.
 - Model capture example:
-![model_capture_example_](https://github.com/user-attachments/assets/89f7e226-c9ef-48d5-ad7c-b1a51436345a)
+
 ![model_capture_example](https://github.com/user-attachments/assets/133cc5b8-0a69-488a-a704-6facb332c613)
+  
+![model_capture_example_](https://github.com/user-attachments/assets/89f7e226-c9ef-48d5-ad7c-b1a51436345a)
+
+
 
 ## 🛠️ Installation
 
@@ -208,12 +218,6 @@ Set the WATER_GUN_VOLTAGE in the .env file to match your water gun's specificati
 
 Logs are saved in the logs/ directory for monitoring detections and system performance.
 Review logs to analyze detection accuracy and system responsiveness.
-
-## 📷 Demo
-
-Live Demo Video
-
-https://github.com/user-attachments/assets/09067a2b-6405-4b89-9aff-c5620eb1b70c
 
 ## 🧰 Technologies
 
