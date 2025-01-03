@@ -65,13 +65,15 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 
 - Converted the trained model to a format compatible with Raspberry Pi.
 - Optimized the model for real-time inference on edge devices.
+- Best Model Results:
+
+![image](https://github.com/user-attachments/assets/15c5b8c8-66ef-47c2-959c-75e3633e22b0)
+
 - Model capture example:
 
 ![model_capture_example](https://github.com/user-attachments/assets/133cc5b8-0a69-488a-a704-6facb332c613)
-  
-![model_capture_example_](https://github.com/user-attachments/assets/89f7e226-c9ef-48d5-ad7c-b1a51436345a)
 
-
+<img src="https://github.com/user-attachments/assets/89f7e226-c9ef-48d5-ad7c-b1a51436345a" alt="model_capture_example_" width="500" height="500"/>
 
 ## 🛠️ Installation
 
