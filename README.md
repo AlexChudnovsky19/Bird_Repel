@@ -73,7 +73,7 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 
 ![model_capture_example](https://github.com/user-attachments/assets/133cc5b8-0a69-488a-a704-6facb332c613)
 
-<img src="https://github.com/user-attachments/assets/89f7e226-c9ef-48d5-ad7c-b1a51436345a" alt="model_capture_example_" width="500" height="500"/>
+<img src="https://github.com/user-attachments/assets/89f7e226-c9ef-48d5-ad7c-b1a51436345a" alt="model_capture_example_" width="600" height="400"/>
 
 ## 🛠️ Installation
 
