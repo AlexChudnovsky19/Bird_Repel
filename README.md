@@ -22,7 +22,7 @@
 
 Live Demo Video, Turn on the sound to hear the activation of the water gun when the bird detected.
 
-https://github.com/user-attachments/assets/09067a2b-6405-4b89-9aff-c5620eb1b70c
+https://github.com/user-attachments/assets/d26f57ec-11eb-4fec-92f1-a3dae460602a
 
 ## 🚀 Features
 
@@ -95,6 +95,8 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 - **YOLOv11** 🔍
 
 ### Hardware Setup 🔧
+
+![Hardware_Setup](https://github.com/user-attachments/assets/b034a707-f648-4d06-8267-6044433683c3)
 
 #### **Set Up the Relay Module 🔌**
 
