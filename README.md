@@ -96,7 +96,7 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 
 ### Hardware Setup 🔧
 
-<img src="https://github.com/user-attachments/assets/b034a707-f648-4d06-8267-6044433683c3" alt="Hardware Setup" width="500" height="300"/>
+<img src="https://github.com/user-attachments/assets/b034a707-f648-4d06-8267-6044433683c3" alt="Hardware Setup" width="600" height="600"/>
 
 #### **Set Up the Relay Module 🔌**
 
