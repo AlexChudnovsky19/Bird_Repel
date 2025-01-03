@@ -59,6 +59,9 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 
 - Converted the trained model to a format compatible with Raspberry Pi.
 - Optimized the model for real-time inference on edge devices.
+- Model capture example:
+![model_capture_example_](https://github.com/user-attachments/assets/89f7e226-c9ef-48d5-ad7c-b1a51436345a)
+![model_capture_example](https://github.com/user-attachments/assets/133cc5b8-0a69-488a-a704-6facb332c613)
 
 ## 🛠️ Installation
 
@@ -207,11 +210,10 @@ Logs are saved in the logs/ directory for monitoring detections and system perfo
 Review logs to analyze detection accuracy and system responsiveness.
 
 ## 📷 Demo
-Watch BirdRepel detect and deter birds in real-time.
 
 Live Demo Video
 
-(Replace the link with your actual demo video URL)
+https://github.com/user-attachments/assets/09067a2b-6405-4b89-9aff-c5620eb1b70c
 
 ## 🧰 Technologies
 
