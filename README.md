@@ -29,10 +29,8 @@ https://github.com/user-attachments/assets/d26f57ec-11eb-4fec-92f1-a3dae460602a
 - **Real-Time Bird Detection 🕒:** Utilizes a YOLOv11 model trained on a custom bird dataset for accurate detection.
 - **Automated Deterrent Activation 💧:** Triggers a water gun to scare away birds upon detection.
 - **Edge Computing 🖥️:** Runs entirely on a Raspberry Pi, ensuring low latency and independence from external servers.
-- **Customizable Detection Parameters 🎛️:** Adjust sensitivity and detection thresholds to suit specific environments.
 - **Energy Efficient 🔋:** Optimized for low power consumption, making it ideal for continuous outdoor use.
 - **Hardware Integration 🔌:** Seamlessly integrates Raspberry Pi with relay modules and external devices like water guns.
-- **Voltage Management ⚡:** Ensures safe and effective voltage regulation for connected peripherals.
 
 ## 🧠 Training Process
 
@@ -71,7 +69,7 @@ Training the YOLOv11 model involved several key steps to ensure high accuracy in
 
 - Model capture example:
 
-![model_capture_example](https://github.com/user-attachments/assets/133cc5b8-0a69-488a-a704-6facb332c613)
+<img src="https://github.com/user-attachments/assets/133cc5b8-0a69-488a-a704-6facb332c613" alt="model_capture_example" width="600" height="400"/>
 
 <img src="https://github.com/user-attachments/assets/89f7e226-c9ef-48d5-ad7c-b1a51436345a" alt="model_capture_example_" width="600" height="400"/>
 
