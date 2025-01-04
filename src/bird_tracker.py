@@ -33,7 +33,6 @@ pca.frequency = 50  # Standard frequency for servos
 PAN_CHANNEL = 0
 TILT_CHANNEL = 1
 
-# You can tune these angles (e.g., 90 is center if your servo is physically aligned)
 pan_angle = 90
 tilt_angle = 90
 
@@ -62,7 +61,6 @@ pca.channels[TILT_CHANNEL].duty_cycle = angle_to_pwm(tilt_angle)
 # TRACKING PARAMETERS
 # ------------------------------------------------------------------------------
 # The Kp values are "proportional" constants controlling how quickly the servos move.
-# Increase them if the movement is too slow; decrease if the movement is too jittery.
 KP_PAN = 0.05
 KP_TILT = 0.05
 
@@ -72,10 +70,9 @@ KP_TILT = 0.05
 WATER_SHOOT_PIN = 17
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(WATER_SHOOT_PIN, GPIO.OUT)
-GPIO.output(WATER_SHOOT_PIN, GPIO.HIGH)  
+GPIO.output(WATER_SHOOT_PIN, GPIO.HIGH)
 
 def shoot_water(duration=1.0):
-   
     logging.info("start water shoot")
     GPIO.output(WATER_SHOOT_PIN, GPIO.LOW)
     time.sleep(duration)
@@ -84,64 +81,58 @@ def shoot_water(duration=1.0):
 
 try:
     while True:
-
         frame = picam2.capture_array()
-
         frame_bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 
         results = model.predict(frame_bgr, stream=False)
-        
-        bird_detected = False
+
+        # We'll draw bounding boxes only for valid, high-confidence detections
         for result in results:
             for box in result.boxes:
                 x1, y1, x2, y2 = map(int, box.xyxy.cpu().numpy()[0])
                 confidence = box.conf.item()
                 class_id = int(box.cls)
-                label = f"{model.names[class_id]}: {confidence * 100:.1f}%"
-
-                cv2.rectangle(frame_bgr, (x1, y1), (x2, y2), (0, 255, 0), 2)
-                cv2.putText(
-                    frame_bgr, 
-                    label, 
-                    (x1, y1 - 10),
-                    cv2.FONT_HERSHEY_SIMPLEX, 
-                    0.5,
-                    (0, 0, 255), 
-                    2
-                )
-
-                # Check if this is a bird class we care about
+                
                 if model.names[class_id] in ["common_myna", "grey_crow", "pigeon"]:
-                    bird_detected = True
+                    
+                    if confidence >= 0.60:
+                        label = f"{model.names[class_id]}: {confidence * 100:.1f}%"
+                        cv2.rectangle(frame_bgr, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                        cv2.putText(
+                            frame_bgr,
+                            label,
+                            (x1, y1 - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            0.5,
+                            (0, 0, 255),
+                            2
+                        )
 
-                    # Get bounding box center
-                    box_center_x = (x1 + x2) // 2
-                    box_center_y = (y1 + y2) // 2
+                        # Calculate error from frame center to track
+                        box_center_x = (x1 + x2) // 2
+                        box_center_y = (y1 + y2) // 2
+                        error_x = box_center_x - FRAME_CENTER_X
+                        error_y = box_center_y - FRAME_CENTER_Y
 
-                    # Calculate error from center
-                    error_x = box_center_x - FRAME_CENTER_X
-                    error_y = box_center_y - FRAME_CENTER_Y
+                        # Adjust pan/tilt angles (simple P-control)
+                        pan_angle -= error_x * KP_PAN
+                        tilt_angle += error_y * KP_TILT
 
-                    # Adjust pan/tilt angles (a simple P-control)
-                    #     Note the sign:
-                    #       If error_x is positive, that means the bird is to the right, 
-                    #       so we need to increase pan_angle to move servo right (depending on your servo orientation).
-                    pan_angle -= error_x * KP_PAN
-                    tilt_angle += error_y * KP_TILT  
+                        # Clamp angles
+                        pan_angle = max(MIN_ANGLE, min(MAX_ANGLE, pan_angle))
+                        tilt_angle = max(MIN_ANGLE, min(MAX_ANGLE, tilt_angle))
 
-                    # Clamp angles to [MIN_ANGLE, MAX_ANGLE]
-                    pan_angle = max(MIN_ANGLE, min(MAX_ANGLE, pan_angle))
-                    tilt_angle = max(MIN_ANGLE, min(MAX_ANGLE, tilt_angle))
+                        # Send angles to servos
+                        pca.channels[PAN_CHANNEL].duty_cycle = angle_to_pwm(pan_angle)
+                        pca.channels[TILT_CHANNEL].duty_cycle = angle_to_pwm(tilt_angle)
 
-                    # Send angles to servos
-                    pca.channels[PAN_CHANNEL].duty_cycle = angle_to_pwm(pan_angle)
-                    pca.channels[TILT_CHANNEL].duty_cycle = angle_to_pwm(tilt_angle)
-
-                    # Optional: shoot water if bird is detected
-                    shoot_water(duration=1.0)
+                        shoot_water(duration=1.0)
+                    else:
+                        logging.info(
+                            f"low confidence {confidence*100:.1f}% < 60%. Skipping."
+                        )
 
         cv2.imshow("Bird Tracker", frame_bgr)
-
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
@@ -150,7 +141,6 @@ except KeyboardInterrupt:
 except Exception as e:
     logging.error(f"Error: {e}")
 finally:
-
     picam2.stop()
     cv2.destroyAllWindows()
 
@@ -162,4 +152,4 @@ finally:
     GPIO.output(WATER_SHOOT_PIN, GPIO.HIGH)
     GPIO.cleanup()
 
-    logging.info("Exiting gracefully...")
+    logging.info("Exiting")
