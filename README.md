@@ -16,7 +16,7 @@
 
 ## 📖 About
 
-**BirdRepel** is an automated bird repellent system designed to protect balcony plants and maintain cleanliness by preventing birds from leaving droppings. Using computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, effectively discouraging birds from approaching and harming your plants and the balcony.
+**BirdRepel** is an automated bird repellent system designed to protect balcony plants and maintain cleanliness by preventing birds from leaving droppings. Using computer vision with a custom-trained YOLOv11 model, BirdRepel detects the presence of birds in real-time. Upon detection, the system activates a water gun via a relay module connected to a Raspberry Pi, the water gun shoots water at the plants effectively discouraging birds from approaching and harming your plants and the balcony.
 
 ## 📷 Demo
 
